@@ -1,5 +1,7 @@
 const config = window.WEDDING_CONFIG;
 const weddingDate = new Date(config.date);
+// Календарный день торжества по местному времени площадки, не гостя
+const weddingDay = new Date(`${config.date.slice(0, 10)}T12:00:00`);
 
 function formatDate(date) {
   return new Intl.DateTimeFormat("ru-RU", { day: "2-digit", month: "2-digit", year: "numeric" }).format(date);
@@ -11,19 +13,19 @@ function setText(selector, value) {
 
 setText("[data-groom]", config.groom);
 setText("[data-bride]", config.bride);
-setText("[data-wedding-date]", formatDate(weddingDate));
+setText("[data-wedding-date]", formatDate(weddingDay));
 setText("[data-venue]", config.venue);
 setText("[data-region]", config.region);
 setText("[data-address]", config.address);
 setText("[data-event-time]", config.time);
-document.title = `${config.groom} и ${config.bride} — ${formatDate(weddingDate)}`;
+document.title = `${config.groom} и ${config.bride} — ${formatDate(weddingDay)}`;
 document.querySelector("[data-map-link]").href = config.mapLink;
 
 function renderCalendar() {
   const monthNames = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-  const year = weddingDate.getFullYear();
-  const month = weddingDate.getMonth();
-  const selectedDay = weddingDate.getDate();
+  const year = weddingDay.getFullYear();
+  const month = weddingDay.getMonth();
+  const selectedDay = weddingDay.getDate();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const mondayOffset = (new Date(year, month, 1).getDay() + 6) % 7;
   const grid = document.querySelector("[data-calendar-grid]");
