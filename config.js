@@ -7,6 +7,5 @@ window.WEDDING_CONFIG = {
   venue: "Ресторан «Карас»",
   region: "Хабаровск",
   address: "улица Кола Бельды, 1",
-  mapLink: "https://yandex.tj/maps/-/CXvQqDIG",
-  googleScriptUrl: "https://script.google.com/macros/s/AKfycbyG68_3fcdj3_pUD1V-Vh8mU3ILk_boHBON3cDoyNUoBmKwvGUkguUpJXUdM59y66_d2w/exec"
+  mapLink: "https://yandex.tj/maps/-/CXvQqDIG"
 };
